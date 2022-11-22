@@ -11,14 +11,26 @@
 
 int main()
 {
-  printf("Hello World! Nothing to see here yet!\n");
-  Individu Pavel = NULL;
-  BitIndividu bit;
-  bit.bitValue = 1;
-  bit.next = NULL;
-  int pavel = longIndiv;
-  
+  Individu g1;
+  g1 = (BitIndividu*)malloc(sizeof(BitIndividu));
 
-  printf("%d", pavel);
+  Individu g2;
+  g2 = (BitIndividu*)malloc(sizeof(BitIndividu));
+   
+  g1 ->bitValue = 0;
+  g1 ->nextBit = g2; 
+  g2 ->bitValue = 1;
+  g2 ->nextBit = NULL;
+
+  Individu gilles = g1;
+  printf("La valeur decimale de gilles est %d \n" , RtoDecimal(gilles));
+
+
+  for (int i = 0; i < 1000; i++)
+  {
+    Bit received = aleaBinVal();
+    printf("The random value received is : %d \n", received);
+  }
+  
   return (0);
 }
