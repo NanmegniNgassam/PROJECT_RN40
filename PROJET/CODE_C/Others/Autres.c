@@ -25,6 +25,6 @@ float power(float X, int a)
 int aleaBinVal()
 {
   int value = 0;
-  value = rand()%2; // Integer return value chosen among 0 and 1
+  value = rand()%2; // Integer returned value chosen among 0 and 1
   return value;
 }

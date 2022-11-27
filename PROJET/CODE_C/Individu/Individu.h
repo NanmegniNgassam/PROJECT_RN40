@@ -11,7 +11,7 @@
 #include<stdlib.h>
 #include<time.h>
 #include "../Others/Autres.h"
-#define longIndiv 8
+#define lONG_INDIV 8
 #define A -1
 #define B 1
 
@@ -31,8 +31,27 @@ typedef BitIndividu *Individu;
 
 //DECLARATION OF CONSTRUCTORS
 
+//add a bit to the start of a sequence of bits (Individual)
+Individu addHead(Individu i, Bit b);
+
+//add a bit to the end of a sequence of bits (Individual)
+Individu addTail(Individu i, Bit b);
+
+//delete a bit to the start of a sequence of bits (Individual)
+Individu deleteHead(Individu i);
+
+//delete a bit to the end of a sequence of bits (Individual)
+Individu deleteTail(Individu i);
+
+//return a sequence of bits private from its first bit
+Individu remain(Individu i);
 
 
+//return an Individual with random bits in its sequence
+Individu randomInit( int nbOfBits);
+
+//return recursively an Individual with random bits in its sequence
+Individu RrandomInit( int nbOfBits);
 
 //DECLARATION OF GETTERS AND ACCESS FUNCTION
 
@@ -41,7 +60,6 @@ Bool isEmpty(Individu i);
 
 //Returns from an Individual, the decimal value associated to its binary sequence
 int RtoDecimal(Individu i);
-
 
 
 
