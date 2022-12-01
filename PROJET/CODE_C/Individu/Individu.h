@@ -14,6 +14,7 @@
 #define lONG_INDIV 8
 #define A -1
 #define B 1
+#define P_CROSSING 0.63
 
 typedef unsigned char Bit;
 
@@ -52,6 +53,9 @@ Individu randomInit( int nbOfBits);
 
 //return recursively an Individual with random bits in its sequence
 Individu RrandomInit( int nbOfBits);
+
+//return an individual issued from a random mixing of two individuals
+Individu Rcrossing(Individu i, Individu j);
 
 //DECLARATION OF GETTERS AND ACCESS FUNCTION
 

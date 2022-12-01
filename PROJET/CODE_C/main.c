@@ -9,19 +9,50 @@
 #include"Individu/Individu.h"
 #include"Population/Population.h"
 
+
 int main()
 {
   srand(time(NULL));
-  Individu gilles = RrandomInit(lONG_INDIV);
+
+  Individu gilles = randomInit(lONG_INDIV);
   Individu current = gilles;
+  printf("Parent : ");
   while (current != NULL)
   {
     printf("%d ", (current->bitValue));
     current = current->nextBit;
   }
+  printf(" (%d) ", RtoDecimal(gilles));
+  printf(" | (%f)\n", quality(gilles));
+  
 
-  printf("\nLa valeur decimale de gilles est %d ", RtoDecimal(gilles));
-  printf("\n la qualite associe à gilles est de %f.", quality(gilles));
+  Individu pavel = RrandomInit(lONG_INDIV);
+  current = pavel;
+  printf("Parent : ");
+  while (current != NULL)
+  {
+    printf("%d ", (current->bitValue));
+    current = current->nextBit;
+  }
+  printf(" (%d) ", RtoDecimal(pavel));
+  printf(" | (%f)\n", quality(pavel));
+
+
+  printf("The individual issued from the two with a probability of %f is:\n", P_CROSSING*100);
+  Individu ngassam = Rcrossing(gilles, pavel);
+  current = ngassam;
+  printf("Child  : ");
+  while (current != NULL)
+  {
+    printf("%d ", (current->bitValue));
+    current = current->nextBit;
+  }
+  printf(" (%d) ", RtoDecimal(ngassam));
+  printf(" | (%f)\n", quality(ngassam));
+
+
+  printf("\n");
 
   return (0);
 }
+

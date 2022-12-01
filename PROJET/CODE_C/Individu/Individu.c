@@ -115,13 +115,35 @@ Individu RrandomInit( int nbOfBits)
 Individu randomInit( int nbOfBits)
 {
   int turn = nbOfBits;
-  Individu indiv;
+  Individu indiv = NULL;
   while (turn >= 1)
   {
     indiv = addHead(indiv, aleaBinVal());
     turn--;
   }
   return indiv;
+}
+
+//return an individual issued from a random mixing of two individuals
+Individu Rcrossing(Individu i, Individu j)
+{
+  if(isEmpty(i) && isEmpty(j))
+  {
+    return i;
+  }
+  else
+  {
+    // generation of a value included between 1 and 100 and compare it with a crossing probability setting up as a constant(0.01)
+    int random = rand()%100 + 1;
+    if (random <= 100*P_CROSSING)
+    {
+      return addHead(Rcrossing(remain(i), remain(j)) , i->bitValue);
+    }
+    else
+    {
+      return addHead(Rcrossing(remain(i), remain(j)) , j->bitValue);
+    }
+  }
 }
 
 
