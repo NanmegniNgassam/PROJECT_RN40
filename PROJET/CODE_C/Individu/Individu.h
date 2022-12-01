@@ -61,6 +61,9 @@ Bool isEmpty(Individu i);
 //Returns from an Individual, the decimal value associated to its binary sequence
 int RtoDecimal(Individu i);
 
+//Returns from an indivdual, its quality
+float quality(Individu i);
+
 
 
 #endif // INDIVIDU_H

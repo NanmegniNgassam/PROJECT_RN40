@@ -21,6 +21,7 @@ int main()
   }
 
   printf("\nLa valeur decimale de gilles est %d ", RtoDecimal(gilles));
+  printf("\n la qualite associe à gilles est de %f.", quality(gilles));
 
   return (0);
 }

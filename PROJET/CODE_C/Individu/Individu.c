@@ -111,6 +111,19 @@ Individu RrandomInit( int nbOfBits)
   }
 }
 
+//return an Individual with random bits in its sequence
+Individu randomInit( int nbOfBits)
+{
+  int turn = nbOfBits;
+  Individu indiv;
+  while (turn >= 1)
+  {
+    indiv = addHead(indiv, aleaBinVal());
+    turn--;
+  }
+  return indiv;
+}
+
 
 //IMPLEMENTATION OF GETTERS AND ACCESS FUNCTIONS
 
@@ -134,4 +147,15 @@ int RtoDecimal(Individu i)
   {
     return ((i->bitValue) + 2*(RtoDecimal(i->nextBit)));
   }
+}
+
+//Returns from an indivdual, its quality -- f(x) = -X^2 // X = (value / 2^LONG_INDIV)*(B-A) + A
+float quality(Individu i)
+{
+  int value = RtoDecimal(i);
+  float temp = value/(power(2,lONG_INDIV));
+  temp = temp*(B-A);
+  temp = temp + A; //(value / 2^LONG_INDIV)*(B-A) + A
+
+  return -power(temp,2); //f(x) = -X^2
 }

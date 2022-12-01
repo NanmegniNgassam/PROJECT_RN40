@@ -1,5 +1,7 @@
 {
   "files.associations": {
-    "individu.h": "c"
+    "individu.h": "c",
+    "autres.h": "c",
+    "population.h": "c"
   }
 }
