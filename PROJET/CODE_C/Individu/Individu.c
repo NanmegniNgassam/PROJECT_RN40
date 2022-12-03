@@ -42,7 +42,6 @@ Individu addTail(Individu i, Bit b)
     current ->nextBit = temp;
     return i;
   }
-  
 }
 
 //delete a bit to the start of a sequence of bits (Individual)
@@ -68,6 +67,11 @@ Individu deleteTail(Individu i)
 {
   if (isEmpty(i) || isEmpty(i->nextBit))
   {
+    if (isEmpty(i->nextBit))
+    {
+      free(i);
+      i = NULL;
+    }
     return NULL;
   }
   else
@@ -158,7 +162,7 @@ Bool isEmpty(Individu i)
     return false;
 }
 
-//Returns from an Individual, the decimal value associated to its binary sequence
+//returns from an Individual, the decimal value associated to its binary sequence
 int RtoDecimal(Individu i)
 {
   if(isEmpty(i))
@@ -171,13 +175,19 @@ int RtoDecimal(Individu i)
   }
 }
 
-//Returns from an indivdual, its quality -- f(x) = -X^2 // X = (value / 2^LONG_INDIV)*(B-A) + A
-float quality(Individu i)
+//returns from an individual its quality_factor
+float qualityFactor(Individu i) // X = (value / 2^LONG_INDIV)*(B-A) + A
 {
   int value = RtoDecimal(i);
   float temp = value/(power(2,lONG_INDIV));
   temp = temp*(B-A);
   temp = temp + A; //(value / 2^LONG_INDIV)*(B-A) + A
+  return temp;
+}
 
+//returns from an indivdual, its quality -- f(x) = -X^2 // X = i's quality factor
+float quality(Individu i)
+{
+  float temp = qualityFactor(i);
   return -power(temp,2); //f(x) = -X^2
 }

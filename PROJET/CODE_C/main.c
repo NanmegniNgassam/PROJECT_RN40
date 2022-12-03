@@ -9,48 +9,36 @@
 #include"Individu/Individu.h"
 #include"Population/Population.h"
 
+void display(Individu indiv)
+{
+  Individu current = indiv;
+  printf("Bit : ");
+  while (current != NULL)
+  {
+    printf("%d ", (current->bitValue));
+    current = current->nextBit;
+  }
+  printf(" (%d) ", RtoDecimal(indiv));
+  printf(" | (%f)\n", quality(indiv));
+}
 
 int main()
 {
   srand(time(NULL));
 
-  Individu gilles = randomInit(lONG_INDIV);
-  Individu current = gilles;
-  printf("Parent : ");
+  Population nanmegni = popRandomInit(lONG_POP);
+  Population current = nanmegni;
+  int counter = 1;
+
   while (current != NULL)
   {
-    printf("%d ", (current->bitValue));
-    current = current->nextBit;
+    printf("%d -", counter);
+    display(current->indiv);
+    current = current->nextIndiv;
+    counter++;
   }
-  printf(" (%d) ", RtoDecimal(gilles));
-  printf(" | (%f)\n", quality(gilles));
   
-
-  Individu pavel = RrandomInit(lONG_INDIV);
-  current = pavel;
-  printf("Parent : ");
-  while (current != NULL)
-  {
-    printf("%d ", (current->bitValue));
-    current = current->nextBit;
-  }
-  printf(" (%d) ", RtoDecimal(pavel));
-  printf(" | (%f)\n", quality(pavel));
-
-
-  printf("The individual issued from the two with a probability of %f is:\n", P_CROSSING*100);
-  Individu ngassam = Rcrossing(gilles, pavel);
-  current = ngassam;
-  printf("Child  : ");
-  while (current != NULL)
-  {
-    printf("%d ", (current->bitValue));
-    current = current->nextBit;
-  }
-  printf(" (%d) ", RtoDecimal(ngassam));
-  printf(" | (%f)\n", quality(ngassam));
-
-
+  
   printf("\n");
 
   return (0);

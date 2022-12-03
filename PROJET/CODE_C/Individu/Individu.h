@@ -14,7 +14,7 @@
 #define lONG_INDIV 8
 #define A -1
 #define B 1
-#define P_CROSSING 0.63
+#define P_CROSSING 0.6
 
 typedef unsigned char Bit;
 
@@ -62,10 +62,13 @@ Individu Rcrossing(Individu i, Individu j);
 //emptytest to know if an individual is null or not
 Bool isEmpty(Individu i);
 
-//Returns from an Individual, the decimal value associated to its binary sequence
+//returns from an Individual, the decimal value associated to its binary sequence
 int RtoDecimal(Individu i);
 
-//Returns from an indivdual, its quality
+//returns from an individual its quality_factor
+float qualityFactor(Individu i);
+
+//returns from an indivdual, its quality
 float quality(Individu i);
 
 
