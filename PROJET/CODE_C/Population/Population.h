@@ -13,6 +13,7 @@
 #include "../Individu/Individu.h"
 #include "../Others/Autres.h"
 #define lONG_POP 20
+#define T_SELECT 0.4
 
 /*
   Definition of an individual part of a population
@@ -46,15 +47,36 @@ Population removeTail(Population p);
 //return a sequence of Individuals private from its first individual
 Population left(Population p);
 
-//SPECIFIC FUNCTIONS TO THE PROBLEM
+//return a population made up of the individuals of less quality than the head of the population
+Population lessQuality(Population pop);
+
+//return a population made up of the individuals of more quality than the head of the population
+Population moreQuality(Population pop);
+
+//returns the concatenation of two sequences of individual
+Population concat(Population pop1, Population pop2);
+
+//returns an Individual located at a specific position of a population
+Individu position(Population pop, int index);
+
+
+//SPECIFIC FUNCTIONS OF THE PROBLEM
 
 //returns a population randomly made up of Individuals
 Population popRandomInit(int nbIndiv);
 
+//return a sorted population according to the quality of each individual
+Population RquickSort(Population pop);
+
+//return a population made up of the T_SELECT best individuals
+Population popSelection(Population pop);
+
+//return a population from the random crossing of an other population
+Population crossing(Population pop);
 
 //DEFINITION OF GETTERS AND ACCESS FUNCTIONS
 
-//emptytest to know if an individual is null or not
+//empty test to know if a population is null or not
 Bool isNull(Population p);
 
 

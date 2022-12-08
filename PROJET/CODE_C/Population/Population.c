@@ -102,6 +102,104 @@ Population left(Population p)
   }
 }
 
+//returns the concatenation of two sequences of individual
+Population concat(Population pop1, Population pop2)
+{
+  if (isNull(pop1))
+  {
+    return pop2;
+  }
+  else if (isNull(pop2))
+  {
+    return pop1;
+  }
+  else
+  {
+    Population current = pop1;
+    while ((current->nextIndiv) != NULL)
+    {
+      current = current->nextIndiv;
+    }
+    current->nextIndiv = pop2;
+
+    return pop1;
+  }
+}
+
+//return a population made up of the individuals of less quality than the head of the population
+//(Even those with the same quality will be added to the list)
+Population lessQuality(Population pop)
+{
+  if (isNull(pop))
+  {
+    return pop;
+  }
+  else
+  {
+    Population res = NULL;
+    Population current = pop ->nextIndiv; // Le programme commencera au deuxième Individu de la population
+    while (current != NULL)
+    {
+      if (quality(current->indiv) <= quality(pop->indiv))
+      {
+        res = insertHead(res, current->indiv);
+      }
+      current = current->nextIndiv;
+    }
+    return res;
+  }
+}
+
+//return a population made up of the individuals of more quality than the head of the population
+Population moreQuality(Population pop)
+{
+  if (isNull(pop))
+  {
+    return pop;
+  }
+  else
+  {
+    Population res = NULL;
+    Population current = pop ->nextIndiv; // Le programme commencera au deuxième Individu de la population
+    while (current != NULL)
+    {
+      if (quality(current->indiv) > quality(pop->indiv))
+      {
+        res = insertHead(res, current->indiv);
+      }
+      current = current->nextIndiv;
+    }
+    return res;
+  }
+}
+
+//returns an Individual located at a specific position of a population
+Individu position(Population pop, int index)
+{
+  if(index > lONG_POP) // GESTION DES EXCEPTIONS
+  {
+    printf("Veuillez renseigner une position comprise entre 0 et %d\n", lONG_POP);
+    return NULL;
+  }
+  else if(isNull(pop))
+  {
+    printf("Veuillez entrez un tableau non vide\n");
+    return NULL;
+  }
+  else
+  {
+    int i = 1;
+    Population current = pop;
+    /*Parcours  du premier bit jusqu'a l'indice visé*/
+    while (i < index) 
+    {
+      current = current->nextIndiv;
+      i++;
+    }
+    return (current->indiv);
+  }
+}
+
 
 //SPECIFIC FUNCTIONS TO THE PROBLEM
 
@@ -117,6 +215,57 @@ Population popRandomInit(int nbIndiv)
     return insertHead(popRandomInit(nbIndiv - 1), RrandomInit(lONG_INDIV));
   }
 }
+
+//return a sorted population according to the quality of each individual
+Population RquickSort(Population pop)
+{
+  if (isNull(pop) || isNull(pop->nextIndiv))
+  {
+    return pop; // An empty population or with only one individual is considered to be sorted
+  }
+  else
+  {
+    return concat(insertTail(RquickSort(moreQuality(pop)), pop->indiv), RquickSort(lessQuality(pop)));
+  } 
+}
+
+//return a population made up of the T_SELECT best individuals
+Population popSelection(Population pop)
+{
+  int i = 0;
+  int last = T_SELECT*lONG_POP; // Les tselect% meilleurs individus
+  Population popSorted = RquickSort(pop);
+  Population popSelected = NULL;
+
+
+  while (i < lONG_POP)
+  {
+    // On selectionne un individu à la position voulu dans la population trié et on la place dans la nouvelle population
+    Individu selectedIndividual = position(popSorted, (i%last + 1));
+    popSelected = insertTail(popSelected, selectedIndividual);
+    i++;
+  }
+  
+  return popSelected;
+}
+
+//return a population from the random crossing of an other population
+Population crossing(Population pop)
+{
+  Population newPop = NULL;
+  for (int i = 0; i < lONG_POP; i++)
+  {
+    //Declaration de deux individus choisi de manière purement aléatoire dans la population donné
+    Individu indiv1 = position(pop, rand()%lONG_POP + 1);
+    Individu indiv2 = position(pop, rand()%lONG_POP + 1);
+    Individu child = Rcrossing(indiv1, indiv2);
+
+    newPop = insertTail(newPop, child);
+  }
+  
+  return newPop;
+}
+
 
 
 //IMPLEMENTATION OF GETTERS AND ACCESS FUNCTIONS

@@ -11,6 +11,7 @@
 
 void display(Individu indiv)
 {
+  
   Individu current = indiv;
   printf("Bit : ");
   while (current != NULL)
@@ -22,23 +23,29 @@ void display(Individu indiv)
   printf(" | (%f)\n", quality(indiv));
 }
 
+void show(Population pop)
+{
+  int d = 1;
+  Population current = pop;
+  printf("Population :\n");
+  while (current != NULL)
+  {
+    printf("%d ", d);
+    d++;
+    display(current->indiv);
+    current = current->nextIndiv;
+  }
+}
+
 int main()
 {
   srand(time(NULL));
 
   Population nanmegni = popRandomInit(lONG_POP);
-  Population current = nanmegni;
-  int counter = 1;
+  Population nanmegnisort = RquickSort(nanmegni);
 
-  while (current != NULL)
-  {
-    printf("%d -", counter);
-    display(current->indiv);
-    current = current->nextIndiv;
-    counter++;
-  }
-  
-  
+  Population pavel = crossing(nanmegnisort);
+  show(pavel);
   printf("\n");
 
   return (0);
