@@ -8,6 +8,7 @@
 #ifndef AUTRES_H
 #define AUTRES_H
 #include<stdio.h>
+#include<math.h>
 #include<stdlib.h>
 #include<time.h>
 #define true 1

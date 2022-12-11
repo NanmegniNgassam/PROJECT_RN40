@@ -129,7 +129,7 @@ Individu randomInit( int nbOfBits)
 }
 
 //return an individual issued from a random mixing of two individuals
-Individu Rcrossing(Individu i, Individu j)
+Individu RIndivCrossing(Individu i, Individu j)
 {
   if(isEmpty(i) && isEmpty(j))
   {
@@ -141,11 +141,11 @@ Individu Rcrossing(Individu i, Individu j)
     int random = rand()%100 + 1;
     if (random <= 100*P_CROSSING)
     {
-      return addHead(Rcrossing(remain(i), remain(j)) , i->bitValue);
+      return addHead(RIndivCrossing(remain(i), remain(j)) , i->bitValue);
     }
     else
     {
-      return addHead(Rcrossing(remain(i), remain(j)) , j->bitValue);
+      return addHead(RIndivCrossing(remain(i), remain(j)) , j->bitValue);
     }
   }
 }
@@ -189,5 +189,19 @@ float qualityFactor(Individu i) // X = (value / 2^LONG_INDIV)*(B-A) + A
 float quality(Individu i)
 {
   float temp = qualityFactor(i);
-  return -power(temp,2); //f(x) = -X^2
+  return -pow(temp,2); //f(x) = -X^2
+}
+
+//displays the bit sequence of an individual as 1 0 1 0 0 1 1 ... 1 followed by some of its features
+void displayIndiv(Individu indiv)
+{
+  Individu current = indiv;
+  printf("Indiv : ");
+  while (current != NULL)
+  {
+    printf("%d ", (current->bitValue));
+    current = current->nextBit;
+  }
+  printf(" (%d) ", RtoDecimal(indiv));
+  printf(" | (%f)\n", quality(indiv));
 }

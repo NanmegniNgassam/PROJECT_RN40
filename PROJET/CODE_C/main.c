@@ -6,47 +6,23 @@
  */
 #include<stdio.h>
 #include<stdlib.h>
+#include<math.h>
 #include"Individu/Individu.h"
 #include"Population/Population.h"
-
-void display(Individu indiv)
-{
-  
-  Individu current = indiv;
-  printf("Bit : ");
-  while (current != NULL)
-  {
-    printf("%d ", (current->bitValue));
-    current = current->nextBit;
-  }
-  printf(" (%d) ", RtoDecimal(indiv));
-  printf(" | (%f)\n", quality(indiv));
-}
-
-void show(Population pop)
-{
-  int d = 1;
-  Population current = pop;
-  printf("Population :\n");
-  while (current != NULL)
-  {
-    printf("%d ", d);
-    d++;
-    display(current->indiv);
-    current = current->nextIndiv;
-  }
-}
+#define N_GEN 200
 
 int main()
 {
   srand(time(NULL));
 
-  Population nanmegni = popRandomInit(lONG_POP);
-  Population nanmegnisort = RquickSort(nanmegni);
-
-  Population pavel = crossing(nanmegnisort);
-  show(pavel);
-  printf("\n");
+  Population p1 = popRandomInit(lONG_POP);
+  for (int i = 0; i < N_GEN; i++)
+  {
+    p1 = popCrossing(p1);
+    p1 = RquickSort(p1);
+    p1 = popSelection(p1);
+  }
+  displayIndiv(p1->indiv);
 
   return (0);
 }

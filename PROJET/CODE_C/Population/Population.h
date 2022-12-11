@@ -12,8 +12,8 @@
 #include<time.h>
 #include "../Individu/Individu.h"
 #include "../Others/Autres.h"
-#define lONG_POP 20
-#define T_SELECT 0.4
+#define lONG_POP 50
+#define T_SELECT 0.1
 
 /*
   Definition of an individual part of a population
@@ -72,12 +72,17 @@ Population RquickSort(Population pop);
 Population popSelection(Population pop);
 
 //return a population from the random crossing of an other population
-Population crossing(Population pop);
+Population popCrossing(Population pop);
+
+
 
 //DEFINITION OF GETTERS AND ACCESS FUNCTIONS
 
 //empty test to know if a population is null or not
 Bool isNull(Population p);
+
+//display all the individual of a population
+void displayPop(Population pop);
 
 
 #endif //POPULATION_H

@@ -250,15 +250,15 @@ Population popSelection(Population pop)
 }
 
 //return a population from the random crossing of an other population
-Population crossing(Population pop)
+Population popCrossing(Population pop)
 {
   Population newPop = NULL;
   for (int i = 0; i < lONG_POP; i++)
   {
-    //Declaration de deux individus choisi de manière purement aléatoire dans la population donné
+    //Tirage de deux individus choisi de manière purement aléatoire dans la population donné
     Individu indiv1 = position(pop, rand()%lONG_POP + 1);
     Individu indiv2 = position(pop, rand()%lONG_POP + 1);
-    Individu child = Rcrossing(indiv1, indiv2);
+    Individu child = RIndivCrossing(indiv1, indiv2);
 
     newPop = insertTail(newPop, child);
   }
@@ -277,4 +277,19 @@ Bool isNull(Population p)
     return true;
   else
     return false;
+}
+
+//display all the individual of a population
+void displayPop(Population pop)
+{
+  int d = 1;
+  Population current = pop;
+  printf("Population :\n");
+  while (current != NULL)
+  {
+    printf("%d_", d);
+    displayIndiv(current->indiv);
+    current = current->nextIndiv;
+    d++;
+  }
 }

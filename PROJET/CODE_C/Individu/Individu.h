@@ -9,13 +9,15 @@
 #define INDIVIDU_H
 #include<stdio.h>
 #include<stdlib.h>
+#include<math.h>
 #include<time.h>
 #include "../Others/Autres.h"
-#define lONG_INDIV 8
+#define lONG_INDIV 16
 #define A -1
 #define B 1
 #define P_CROSSING 0.6
 
+// DEFINTION OF THE BIT TYPE
 typedef unsigned char Bit;
 
 typedef struct bit_individu
@@ -48,29 +50,34 @@ Individu deleteTail(Individu i);
 Individu remain(Individu i);
 
 
+//DECLARATION OF GETTERS AND ACCESS FUNCTION
+
+//emptytest to know if an individual is null or not
+Bool isEmpty(Individu i);
+
+//displays the bit sequence of an individual
+void displayIndiv(Individu indiv);
+
+
+//DECLARATION OF THE PROBLEM SPECIFIC FUNCTIONS
+
 //return an Individual with random bits in its sequence
 Individu randomInit( int nbOfBits);
 
 //return recursively an Individual with random bits in its sequence
 Individu RrandomInit( int nbOfBits);
 
-//return an individual issued from a random mixing of two individuals
-Individu Rcrossing(Individu i, Individu j);
-
-//DECLARATION OF GETTERS AND ACCESS FUNCTION
-
-//emptytest to know if an individual is null or not
-Bool isEmpty(Individu i);
-
 //returns from an Individual, the decimal value associated to its binary sequence
 int RtoDecimal(Individu i);
+
+//return an individual issued from a random mixing of two individuals
+Individu RIndivCrossing(Individu i, Individu j);
 
 //returns from an individual its quality_factor
 float qualityFactor(Individu i);
 
 //returns from an indivdual, its quality
 float quality(Individu i);
-
 
 
 #endif // INDIVIDU_H
