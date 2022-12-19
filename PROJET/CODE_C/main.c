@@ -14,14 +14,19 @@
 int main()
 {
   srand(time(NULL));
+  //Initialisation aléatoire d'une population
+  Population p1 = popRandomInit(LONG_POP);
 
-  Population p1 = popRandomInit(lONG_POP);
+  //Brassage et selection de la population
   for (int i = 0; i < N_GEN; i++)
   {
     p1 = popCrossing(p1);
     p1 = RquickSort(p1);
     p1 = popSelection(p1);
   }
+
+
+  //Affichage du meilleure individu de la population
   displayIndiv(p1->indiv);
 
   return (0);

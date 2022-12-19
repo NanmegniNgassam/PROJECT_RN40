@@ -176,9 +176,9 @@ Population moreQuality(Population pop)
 //returns an Individual located at a specific position of a population
 Individu position(Population pop, int index)
 {
-  if(index > lONG_POP) // GESTION DES EXCEPTIONS
+  if(index > LONG_POP) // GESTION DES EXCEPTIONS
   {
-    printf("Veuillez renseigner une position comprise entre 0 et %d\n", lONG_POP);
+    printf("Veuillez renseigner une position comprise entre 0 et %d\n", LONG_POP);
     return NULL;
   }
   else if(isNull(pop))
@@ -212,7 +212,7 @@ Population popRandomInit(int nbIndiv)
   }
   else
   {
-    return insertHead(popRandomInit(nbIndiv - 1), RrandomInit(lONG_INDIV));
+    return insertHead(popRandomInit(nbIndiv - 1), RrandomInit(LONG_INDIV));
   }
 }
 
@@ -233,12 +233,12 @@ Population RquickSort(Population pop)
 Population popSelection(Population pop)
 {
   int i = 0;
-  int last = T_SELECT*lONG_POP; // Les tselect% meilleurs individus
+  int last = T_SELECT*LONG_POP; // Les tselect% meilleurs individus
   Population popSorted = RquickSort(pop);
   Population popSelected = NULL;
 
 
-  while (i < lONG_POP)
+  while (i < LONG_POP)
   {
     // On selectionne un individu à la position voulu dans la population trié et on la place dans la nouvelle population
     Individu selectedIndividual = position(popSorted, (i%last + 1));
@@ -253,11 +253,11 @@ Population popSelection(Population pop)
 Population popCrossing(Population pop)
 {
   Population newPop = NULL;
-  for (int i = 0; i < lONG_POP; i++)
+  for (int i = 0; i < LONG_POP; i++)
   {
     //Tirage de deux individus choisi de manière purement aléatoire dans la population donné
-    Individu indiv1 = position(pop, rand()%lONG_POP + 1);
-    Individu indiv2 = position(pop, rand()%lONG_POP + 1);
+    Individu indiv1 = position(pop, rand()%LONG_POP + 1);
+    Individu indiv2 = position(pop, rand()%LONG_POP + 1);
     Individu child = RIndivCrossing(indiv1, indiv2);
 
     newPop = insertTail(newPop, child);

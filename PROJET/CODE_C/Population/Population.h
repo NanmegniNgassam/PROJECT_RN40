@@ -12,7 +12,7 @@
 #include<time.h>
 #include "../Individu/Individu.h"
 #include "../Others/Autres.h"
-#define lONG_POP 50
+#define LONG_POP 50
 #define T_SELECT 0.1
 
 /*

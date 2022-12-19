@@ -1,8 +1,8 @@
 /**
  * @name NANMEGNI_NGASSAM
- * @date 07/11/2022
+ * @date 15/12/2022
  * @file Individu.h
- * @brief Definition and use of abstract data type Individual
+ * @brief Definition du type abstrait Individu
  */
 
 #ifndef INDIVIDU_H
@@ -12,12 +12,12 @@
 #include<math.h>
 #include<time.h>
 #include "../Others/Autres.h"
-#define lONG_INDIV 16
+#define LONG_INDIV 16
 #define A -1
 #define B 1
 #define P_CROSSING 0.6
 
-// DEFINTION OF THE BIT TYPE
+// DEFINTION DU TYPE BIT
 typedef unsigned char Bit;
 
 typedef struct bit_individu
@@ -27,56 +27,56 @@ typedef struct bit_individu
 }BitIndividu;
 
 /**
- * @brief Definition of Individual as a sequence of bits
+ * @brief Définition du type Individu en tant qu'une liste chainée de bits
 */
 typedef BitIndividu *Individu;
 
 
-//DECLARATION OF CONSTRUCTORS
+//DECLARATION DES FONCTIONS DE CONSTRUCTION (Primitives)
 
-//add a bit to the start of a sequence of bits (Individual)
+//ajouter un bit en début d'un individu
 Individu addHead(Individu i, Bit b);
 
-//add a bit to the end of a sequence of bits (Individual)
+//ajouter un bit en queue d'un individu
 Individu addTail(Individu i, Bit b);
 
-//delete a bit to the start of a sequence of bits (Individual)
+//supprimer un bit en tête d'un individu
 Individu deleteHead(Individu i);
 
-//delete a bit to the end of a sequence of bits (Individual)
+//supprimer un bit à la fin d'un individu
 Individu deleteTail(Individu i);
 
-//return a sequence of bits private from its first bit
+//retourne l'individu passé en paramètre privé de son premier element
 Individu remain(Individu i);
 
 
-//DECLARATION OF GETTERS AND ACCESS FUNCTION
+//DECLARATION DES OBSERVATEURS ET DES FONCTIONS D'ACCES
 
-//emptytest to know if an individual is null or not
+//vérifie si un individu i est vide
 Bool isEmpty(Individu i);
 
-//displays the bit sequence of an individual
+//affiche les bits dont sont formés l'infividu indiv
 void displayIndiv(Individu indiv);
 
 
-//DECLARATION OF THE PROBLEM SPECIFIC FUNCTIONS
+//DECLARATION DES FONCTIONS SPECIFIQUES AU PROBLEME
 
-//return an Individual with random bits in its sequence
+//retourne un individu formé d'une séquence aléatoire de bits
 Individu randomInit( int nbOfBits);
 
-//return recursively an Individual with random bits in its sequence
+//retourne un individu formé d'une séquence aléatoire de nbOfBits bits -- récursive 
 Individu RrandomInit( int nbOfBits);
 
-//returns from an Individual, the decimal value associated to its binary sequence
+//returns la valeur décimale associé à un individu i -- lecture de la droite vers la gauche
 int RtoDecimal(Individu i);
 
-//return an individual issued from a random mixing of two individuals
+//retourne un individu formé du croissement entre deux individus (i et j)
 Individu RIndivCrossing(Individu i, Individu j);
 
-//returns from an individual its quality_factor
+//reourne le facteur de qualité d'un individu i
 float qualityFactor(Individu i);
 
-//returns from an indivdual, its quality
+//retourne pour un individu i sa qualité
 float quality(Individu i);
 
 

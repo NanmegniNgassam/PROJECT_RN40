@@ -116,6 +116,7 @@ Individu RrandomInit( int nbOfBits)
 }
 
 //return an Individual with random bits in its sequence
+//Explications nombre de bits c'est quoi?
 Individu randomInit( int nbOfBits)
 {
   int turn = nbOfBits;
@@ -179,7 +180,7 @@ int RtoDecimal(Individu i)
 float qualityFactor(Individu i) // X = (value / 2^LONG_INDIV)*(B-A) + A
 {
   int value = RtoDecimal(i);
-  float temp = value/(power(2,lONG_INDIV));
+  float temp = value/(power(2,LONG_INDIV));
   temp = temp*(B-A);
   temp = temp + A; //(value / 2^LONG_INDIV)*(B-A) + A
   return temp;
