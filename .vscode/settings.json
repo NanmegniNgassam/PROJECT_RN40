@@ -3,6 +3,8 @@
     "individu.h": "c",
     "autres.h": "c",
     "population.h": "c",
-    "stdlib.h": "c"
-  }
+    "stdlib.h": "c",
+    "time.h": "c"
+  },
+  "cmake.sourceDirectory": "${workspaceFolder}/PROJET/Makefiles"
 }

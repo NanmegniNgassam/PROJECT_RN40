@@ -105,9 +105,10 @@ Individu remain(Individu i)
 //return recursively an Individual with random bits in its sequence
 Individu RrandomInit( int nbOfBits)
 {
-  if(nbOfBits == 1)
+  
+  if(nbOfBits <= 0)
   {
-    return addHead(NULL, aleaBinVal());
+    return NULL;
   }
   else
   {
@@ -190,7 +191,8 @@ float qualityFactor(Individu i) // X = (value / 2^LONG_INDIV)*(B-A) + A
 float quality(Individu i)
 {
   float temp = qualityFactor(i);
-  return -pow(temp,2); //f(x) = -X^2
+  //return -logf(temp); //f(x) = -X^2
+  return -power(temp,2);
 }
 
 //displays the bit sequence of an individual as 1 0 1 0 0 1 1 ... 1 followed by some of its features

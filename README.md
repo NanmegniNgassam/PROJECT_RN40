@@ -16,28 +16,28 @@ In order to conceptualize the problem, we are going to make some assumptions lik
 <strong>The purpose of this experiment is to sort out the best individual among a population</strong>
 
 ## Technologies used in the projet
--C;
--Cmake;
--AGILESCRUM;
--OOP, Recursivity...
-C, OOP, Cmake, AGILESCRUM, Recursivity...
+-C; <br>
+-Cmake;<br>
+-AGILESCRUM;<br>
+-OOP, Recursivity...<br>
 
 ## How to use the program?
-The executable file generated is genetic.exe. In order to launch it you have to:
--Download the complete project GENETIC_OPTIMIZATION;
--Unzip it and open the directory GENETIC_OPTIMIZATION with the command (cmd, powershell,...);
--execute <i> cd PROJET/EXECUTABLE/ </i>;
--run the program using the line <i> .\genetic </i>.
+The executable file generated is genetic.exe. In order to launch it you have to:<br>
+-Download the complete project GENETIC_OPTIMIZATION;<br>
+-Unzip it and open the directory GENETIC_OPTIMIZATION with the command (cmd, powershell,...);<br>
+-execute <i> cd PROJET/EXECUTABLE/ </i>;<br>
+-run the program using the line <i> .\genetic </i>.<br>
 <br>
 
-The executable file(genetic.exe) was generated with a certain number of values defined as constants in the beginning. You can update them if you want and re-build the projet using cmake in order to make your changes be applied. You need to go throught the following steps:
--Download the complete project GENETIC_OPTIMIZATION;
--Download and install Cmake, at least the 3.20 VERSION;
--Unzip the project and open the full project with an IDE;
--go to "GENETIC_OPTIMIZATION/PROJET/CODE_C" , here are all the sources files;
--Make all your changes according to your purpose;
--then go to "GENETIC_OPTIMIZATION/PROJET/Makefiles";
--run <i>cmake -G "MinGW Makefiles"</i>;
--run <i>cmake --build ./</i>;
--open the directory "GENETIC_OPTIMIZATION/PROJET/EXECUTABLE" with a command line;
--run the program using the line <i> .\genetic </i>.
+The executable file(genetic.exe) was generated with a certain number of values defined as constants in the beginning. You can update them if you want and re-build the projet using cmake in order to make your changes be applied. You need to go throught the following steps:<br>
+-Download the complete project GENETIC_OPTIMIZATION;<br>
+-Download and install Cmake, at least the 3.20 VERSION;<br>
+-Unzip the project and open the full project with an IDE;<br>
+-go to "GENETIC_OPTIMIZATION/PROJET/CODE_C" , here are all the sources files;<br>
+-Make all your changes according to your purpose;<br>
+-then go to "GENETIC_OPTIMIZATION/PROJET/Makefiles";<br>
+-run <i>cmake -G "MinGW Makefiles"</i>;<br>
+-run <i>cmake --build ./</i>;<br>
+-open the directory "GENETIC_OPTIMIZATION/PROJET/EXECUTABLE" with a command line;<br>
+-run the program using the line <i> .\genetic </i>.<br>
+<br>

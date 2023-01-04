@@ -12,7 +12,7 @@
 #include<math.h>
 #include<time.h>
 #include "../Others/Autres.h"
-#define LONG_INDIV 16
+#define LONG_INDIV 8
 #define A -1
 #define B 1
 #define P_CROSSING 0.6
